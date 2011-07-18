@@ -1,0 +1,17 @@
+{
+  "domain": "mopery.com",
+
+  "stylesheets": [
+    "stylesheets/reddit-ui.css"
+  ],
+
+  "javascripts": [
+    "javascripts/reddit-lib.js",
+    "javascripts/reddit-ui.js"
+  ],
+  
+  "lib": [
+    ["jquery", "1.5.2"],
+    ["hasher", "0.0.3"]
+  ] 
+}
