@@ -12,6 +12,8 @@
 // interface todo:
 // - add level above current root (homepage) for subreddits (default is homepage though, left goes to subreddits)
 
+console.log('reddit-ui.js');
+
 (function() { with (Hasher.Controller('Application')) {
   route({
     '#': 'index'
@@ -34,7 +36,6 @@
   create_action('index', function() {
     Reddit.read('/', function(data) {
       //console.log(data);
-      
       render('index_with_data', data);
       
       $('body').scrollTop(0);
