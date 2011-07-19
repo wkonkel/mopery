@@ -34,6 +34,7 @@
   create_action('index', function() {
     Reddit.read('/', function(data) {
       //console.log(data);
+      
       render('index_with_data', data);
       
       $('body').scrollTop(0);
