@@ -12,7 +12,7 @@
 // interface todo:
 // - add level above current root (homepage) for subreddits (default is homepage though, left goes to subreddits)
 
-console.log('reddit-ui.js');
+//console.log('reddit-ui.js');
 
 (function() { with (Hasher.Controller('Application')) {
   route({
@@ -98,7 +98,7 @@ with (Hasher.View('Application')) {
     return ul({ id: 'ul-root' }, 
       $.map(json.data.children, function(child) {
         //return li({ events: { mouseover: function() { select_li(this) }, click: action('show_child') } },
-        console.log(child.data);
+        //console.log(child.data);
         return li(
           ((child.data.thumbnail && child.data.thumbnail.length > 0) ? img({ src: child.data.thumbnail }) : null),
           div({ 'class': 'title' }, child.data.title),
