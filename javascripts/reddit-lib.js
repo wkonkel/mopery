@@ -1,8 +1,3 @@
-// use jsonp when anonymous
-// use xd communication when not (unattach browser plugin required)
-
-// possibly xd entry point:  http://www.reddit.com/.json?jsonp=alert('hi')//
-
 var Reddit = {
   callbacks: [],
   read: function(url, callback) {

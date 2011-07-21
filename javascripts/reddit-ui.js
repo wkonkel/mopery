@@ -1,18 +1,5 @@
-// todo
-// - clicking "(unattached)" pops up an asset editor modal dialog (docked? floating window? toolbar?)
-// - register regexps for rendering different story types based on domain (youtube, imgur, scrape 3rd party sites article, etc)
-// - developer chat (based on irc)
-// - remote XSS plugin 
-// - read-only browsable version at http://unattached.com/reddit, but "login" requires the toolbar (doesn't support iphone)
-// - ssh://some-key@ssh.unattach.com/  link to verify ssh keys instead of copying/pasting. 
-//   - node.js app that listens for ssh connections and just records the public keys
-// - search box (built on google)
-// - automatically pull in new versions of http://connect.facebook.net/en_US/all.js
-// - load imgur.com images automatically, read the width/height, and decide how to render it based on that (fullscreen popup, etc).
-// interface todo:
-// - add level above current root (homepage) for subreddits (default is homepage though, left goes to subreddits)
+alert("oh hai");
 
-//console.log('reddit-ui.js');
 
 (function() { with (Hasher.Controller('Application')) {
   route({
@@ -35,7 +22,7 @@
 
   create_action('index', function() {
     Reddit.read('/', function(data) {
-      //console.log(data);
+      console.log(data);
       render('index_with_data', data);
       
       $('body').scrollTop(0);
@@ -96,21 +83,26 @@ with (Hasher.View('Application')) {
 
   create_view('index_with_data', function(json) {
     return ul({ id: 'ul-root' }, 
-      $.map(json.data.children, function(child) {
-        //return li({ events: { mouseover: function() { select_li(this) }, click: action('show_child') } },
-        //console.log(child.data);
-        return li(
-          ((child.data.thumbnail && child.data.thumbnail.length > 0) ? img({ src: child.data.thumbnail }) : null),
-          div({ 'class': 'title' }, child.data.title),
-          div({style: 'clear:both' }),
-          div('Ups: ', child.data.ups, ' Downs: ', child.data.downs, ' Comments: ', child.data.num_comments),
-          ul(
-            li(child.data.selftext_html),
-            li('comment1'),
-            li('comment2')
-          )
-        );
-      })
+      li(
+        img({ src: 'http://static.reddit.com/reddit.com.header.png' }, 
+        ul(
+          $.map(json.data.children, function(child) {
+            //return li({ events: { mouseover: function() { select_li(this) }, click: action('show_child') } },
+            console.log(child.data);
+            return li(
+              ((child.data.thumbnail && child.data.thumbnail.length > 0) ? img({ src: child.data.thumbnail }) : null),
+              div({ 'class': 'title' }, child.data.title),
+              div({style: 'clear:both' }),
+              div('Ups: ', child.data.ups, ' Downs: ', child.data.downs, ' Comments: ', child.data.num_comments),
+              ul(
+                li(child.data.selftext_html),
+                li('comment1'),
+                li('comment2')
+              )
+            );
+          })
+        )
+      )
     );
   });
 }})();
